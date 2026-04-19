@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kotaro Yamasaki - Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f5f5f7;
+    --white: #ffffff;
+    --black: #1d1d1f;
+    --mid: #6e6e73;
+    --light: #d2d2d7;
+    --lightest: #e8e8ed;
+    --font: 'DM Sans', 'Noto Sans JP', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--black);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    background: rgba(245,245,247,0.88);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--lightest);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    height: 52px;
+    gap: 1rem;
+  }
+
+  .nav-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--black);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    flex-shrink: 0;
+  }
+
+  /* desktop nav links */
+  .nav-center {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-center a {
+    font-size: 13px;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-center a:hover { color: var(--black); }
+
+  /* language switcher */
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    background: var(--lightest);
+    border-radius: 980px;
+    padding: 3px;
+    flex-shrink: 0;
+  }
+
+  .lang-opt {
+    font-family: var(--font);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 980px;
+    border: none;
+    background: transparent;
+    color: var(--mid);
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+    line-height: 1.4;
+  }
+
+  .lang-opt.active {
+    background: var(--white);
+    color: var(--black);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  /* hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    flex-shrink: 0;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--black);
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+    transform-origin: center;
+  }
+
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* mobile drawer */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 52px; left: 0; right: 0;
+    z-index: 199;
+    background: rgba(245,245,247,0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--lightest);
+    padding: 1.5rem 5%;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--black);
+    text-decoration: none;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--lightest);
+    display: block;
+  }
+
+  .mobile-menu a:last-child { border-bottom: none; }
+
+  /* ── COMMON ── */
+  hr { border: none; border-top: 1px solid var(--lightest); }
+
+  /* ── HERO ── */
+  #hero {
+    padding: 140px 5% 80px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    color: var(--mid);
+    letter-spacing: 0.02em;
+    margin-bottom: 1.2rem;
+  }
+
+  h1 {
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    font-weight: 600;
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--mid);
+    max-width: 500px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+  .btn {
+    font-family: var(--font);
+    font-size: 14px;
+    padding: 0.65rem 1.4rem;
+    border-radius: 980px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .btn:hover { opacity: 0.76; }
+  .btn-dark { background: var(--black); color: #fff; border: none; }
+  .btn-ghost { background: transparent; color: var(--black); border: 1px solid var(--light); }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 72px 5%;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: clamp(1.7rem, 4vw, 2.8rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── STATS ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--lightest);
+    border: 1px solid var(--lightest);
+    border-radius: 18px;
+    overflow: hidden;
+    margin-top: 2.5rem;
+  }
+
+  .stat {
+    background: var(--white);
+    padding: 1.75rem 1rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label { font-size: 11px; color: var(--mid); }
+
+  /* ── GRIDS ── */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--lightest);
+    border: 1px solid var(--lightest);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--lightest);
+    border: 1px solid var(--lightest);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  .cell { background: var(--white); padding: 1.75rem; }
+  .cell-sm { background: var(--white); padding: 1.4rem 1.6rem; }
+
+  .cat {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--mid);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .cell-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+  }
+
+  .cell-body {
+    font-size: 0.85rem;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.75rem; }
+
+  .tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 980px;
+    background: var(--bg);
+    color: var(--mid);
+    border: 1px solid var(--lightest);
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 2rem;
+    padding: 2.25rem 0;
+    border-bottom: 1px solid var(--lightest);
+  }
+
+  .exp-item:first-child { border-top: 1px solid var(--lightest); }
+
+  .exp-period { font-size: 13px; color: var(--mid); padding-top: 2px; line-height: 1.5; }
+
+  .exp-role {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 0.15rem;
+    letter-spacing: -0.01em;
+  }
+
+  .exp-company { font-size: 13px; color: var(--mid); margin-bottom: 0.75rem; }
+  .exp-desc { font-size: 0.88rem; color: var(--mid); line-height: 1.75; }
+
+  /* ── PROJECTS ── */
+  .proj-num {
+    font-size: 11px;
+    color: var(--light);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    margin-bottom: 1rem;
+  }
+
+  .proj-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── CERTS ── */
+  .cert-issuer {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--mid);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .cert-name {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--black);
+    line-height: 1.4;
+    margin-bottom: 0.2rem;
+  }
+
+  .cert-year { font-size: 12px; color: var(--light); }
+
+  /* ── CONTACT ── */
+  #contact {
+    text-align: center;
+    padding: 80px 5%;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  #contact h2 { margin-bottom: 0.75rem; }
+
+  .contact-sub {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--mid);
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-row {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    font-size: 14px;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover { color: var(--black); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--lightest);
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  footer span { font-size: 12px; color: var(--mid); }
+
+  /* ── FADE ── */
+  .fade { opacity: 0; transform: translateY(14px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .fade.on { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    /* show hamburger, hide desktop links */
+    .hamburger { display: flex; }
+    .nav-center { display: none; }
+
+    #hero { padding: 110px 5% 60px; }
+
+    section { padding: 52px 5%; }
+
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+
+    .grid-2 { grid-template-columns: 1fr; }
+
+    .exp-item {
+      grid-template-columns: 1fr;
+      gap: 0.3rem;
+      padding: 1.75rem 0;
+    }
+
+    .exp-period { font-size: 12px; }
+
+    footer { flex-direction: column; text-align: center; }
+
+    .contact-row { gap: 1rem; }
+  }
+
+  @media (max-width: 480px) {
+    .grid-3 { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    h1 { font-size: clamp(2.2rem, 11vw, 3rem); }
+    h2 { font-size: clamp(1.5rem, 7vw, 2rem); }
+    .stat-num { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-name" href="#">Kotaro Yamasaki</a>
+
+  <ul class="nav-center">
+    <li><a href="#skills" data-de="Skills" data-jp="スキル">Skills</a></li>
+    <li><a href="#experience" data-de="Erfahrung" data-jp="経歴">Erfahrung</a></li>
+    <li><a href="#projects" data-de="Projekte" data-jp="プロジェクト">Projekte</a></li>
+    <li><a href="#contact" data-de="Kontakt" data-jp="連絡先">Kontakt</a></li>
+  </ul>
+
+  <div style="display:flex;align-items:center;gap:0.75rem;">
+    <div class="lang-toggle">
+      <button class="lang-opt active" data-lang="de">DE</button>
+      <button class="lang-opt" data-lang="jp">JP</button>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#skills" data-de="Skills" data-jp="スキル" onclick="closeMobile()">Skills</a>
+  <a href="#experience" data-de="Erfahrung" data-jp="経歴" onclick="closeMobile()">Erfahrung</a>
+  <a href="#projects" data-de="Projekte" data-jp="プロジェクト" onclick="closeMobile()">Projekte</a>
+  <a href="#contact" data-de="Kontakt" data-jp="連絡先" onclick="closeMobile()">Kontakt</a>
+</div>
+
+<!-- HERO -->
+<div id="hero" class="fade">
+  <p class="eyebrow" data-de="Systems Engineer · Köln, DE" data-jp="システムエンジニア · ケルン、ドイツ">Systems Engineer · Köln, DE</p>
+  <h1><a data-de="Kotaro " data-jp="山﨑">Kotaro </a><a data-de="Yamasaki" data-jp="航太郎">Yamasaki</a></h1>
+  <p class="hero-sub" data-de="Mal schreibe ich Code, mal spiele ich an Servern rum.Ich bin sozusagen ein Vibe Coder." data-jp="気が向いたらコード書いて、気が向いたらサーバーいじってます。いわゆるVibe Coderです。">Mal schreibe ich Code, mal spiele ich an Servern rum.Ich bin sozusagen ein Vibe Coder.</p>
+  <div class="btn-row">
+    <a class="btn btn-dark" href="#projects" data-de="Projekte ansehen" data-jp="プロジェクトを見る">Projekte ansehen</a>
+    <a class="btn btn-ghost" href="#contact" data-de="Kontakt" data-jp="お問い合わせ">Kontakt</a>
+  </div>
+</div>
+
+<hr>
+
+<!-- ABOUT -->
+<section class="fade">
+  <p class="eyebrow" data-de="Über mich" data-jp="自己紹介">Über mich</p>
+  <h2 data-de="8 Jahre.<br>Komplexe Systeme." data-jp="8年間の<br>複雑なシステム。">8 Jahre.<br>Komplexe Systeme.</h2>
+  <p style="color:var(--mid);font-weight:400;max-width:560px;line-height:1.85;font-size:1rem;"
+     data-de="Mit tiefem Verständnis für Linux, Netzwerkarchitektur und DevOps-Praktiken arbeite ich eng mit Entwicklungs- und Betriebsteams zusammen, um stabile Plattformen zu liefern. Infrastructure-as-Code ist für mich kein Trend — es ist Standard."
+     data-jp="Linux、ネットワークアーキテクチャ、DevOpsに関する深い知識を持ち、開発・運用チームと緊密に連携して安定したプラットフォームを提供します。Infrastructure-as-Codeはトレンドではなく、標準です。">Mit tiefem Verständnis für Linux, Netzwerkarchitektur und DevOps-Praktiken arbeite ich eng mit Entwicklungs- und Betriebsteams zusammen, um stabile Plattformen zu liefern. Infrastructure-as-Code ist für mich kein Trend — es ist Standard.</p>
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">8+</span><span class="stat-label" data-de="Jahre Erfahrung" data-jp="年の経験">Jahre Erfahrung</span></div>
+    <div class="stat"><span class="stat-num">40+</span><span class="stat-label" data-de="Projekte" data-jp="プロジェクト">Projekte</span></div>
+    <div class="stat"><span class="stat-num">99.9%</span><span class="stat-label" data-de="Uptime-Ziel" data-jp="稼働率目標">Uptime-Ziel</span></div>
+    <div class="stat"><span class="stat-num">12</span><span class="stat-label" data-de="Zertifizierungen" data-jp="資格">Zertifizierungen</span></div>
+  </div>
+</section>
+
+<hr>
+
+<!-- SKILLS -->
+<section id="skills" class="fade">
+  <p class="eyebrow" data-de="Fähigkeiten" data-jp="スキル">Fähigkeiten</p>
+  <h2 data-de="Was ich kann." data-jp="できること。">Was ich kann.</h2>
+  <div class="grid-3">
+    <div class="cell">
+      <div class="cat" data-de="Systeme" data-jp="システム">Systeme</div>
+      <div class="cell-title" data-de="Operating Systems" data-jp="オペレーティングシステム">Operating Systems</div>
+      <p class="cell-body" data-de="Administration und Hardening von Linux- und Windows-Servern in Produktionsumgebungen." data-jp="本番環境におけるLinux・Windowsサーバーの管理とセキュリティ強化。">Administration und Hardening von Linux- und Windows-Servern in Produktionsumgebungen.</p>
+      <div class="tags"><span class="tag">RHEL</span><span class="tag">Ubuntu</span><span class="tag">Debian</span><span class="tag">Windows Server</span></div>
+    </div>
+    <div class="cell">
+      <div class="cat" data-de="Cloud" data-jp="クラウド">Cloud</div>
+      <div class="cell-title" data-de="Cloud & Container" data-jp="クラウド＆コンテナ">Cloud & Container</div>
+      <p class="cell-body" data-de="Multi-Cloud-Architekturen und Kubernetes-Cluster-Management." data-jp="マルチクラウドアーキテクチャとKubernetesクラスター管理。">Multi-Cloud-Architekturen und Kubernetes-Cluster-Management.</p>
+      <div class="tags"><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">Kubernetes</span><span class="tag">Docker</span></div>
+    </div>
+    <div class="cell">
+      <div class="cat" data-de="Automatisierung" data-jp="自動化">Automatisierung</div>
+      <div class="cell-title" data-de="DevOps & IaC" data-jp="DevOps・IaC">DevOps & IaC</div>
+      <p class="cell-body" data-de="Vollständige CI/CD-Pipelines und versionierte Infrastruktur." data-jp="完全なCI/CDパイプラインとバージョン管理されたインフラ。">Vollständige CI/CD-Pipelines und versionierte Infrastruktur.</p>
+      <div class="tags"><span class="tag">Terraform</span><span class="tag">Ansible</span><span class="tag">GitLab CI</span></div>
+    </div>
+    <div class="cell">
+      <div class="cat" data-de="Sicherheit" data-jp="セキュリティ">Sicherheit</div>
+      <div class="cell-title" data-de="Security & Networking" data-jp="セキュリティ＆ネットワーク">Security & Networking</div>
+      <p class="cell-body" data-de="Netzwerksegmentierung, Firewall-Management und Zero-Trust." data-jp="ネットワーク分離、ファイアウォール管理、ゼロトラスト。">Netzwerksegmentierung, Firewall-Management und Zero-Trust.</p>
+      <div class="tags"><span class="tag">pfSense</span><span class="tag">WireGuard</span><span class="tag">Zero Trust</span></div>
+    </div>
+    <div class="cell">
+      <div class="cat" data-de="Observability" data-jp="可観測性">Observability</div>
+      <div class="cell-title" data-de="Monitoring" data-jp="モニタリング">Monitoring</div>
+      <p class="cell-body" data-de="Zentrales Logging, Metriken und Alerting für Produktionssysteme." data-jp="本番システムの集中ログ管理、メトリクス、アラート設定。">Zentrales Logging, Metriken und Alerting für Produktionssysteme.</p>
+      <div class="tags"><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Loki</span></div>
+    </div>
+    <div class="cell">
+      <div class="cat" data-de="Storage" data-jp="ストレージ">Storage</div>
+      <div class="cell-title" data-de="Storage & Backup" data-jp="ストレージ＆バックアップ">Storage & Backup</div>
+      <p class="cell-body" data-de="Redundante Speicherarchitekturen und Disaster Recovery." data-jp="冗長ストレージアーキテクチャと災害復旧。">Redundante Speicherarchitekturen und Disaster Recovery.</p>
+      <div class="tags"><span class="tag">Ceph</span><span class="tag">NFS</span><span class="tag">Veeam</span><span class="tag">S3</span></div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="fade">
+  <p class="eyebrow" data-de="Berufserfahrung" data-jp="職歴">Berufserfahrung</p>
+  <h2 data-de="Werdegang." data-jp="キャリア。">Werdegang.</h2>
+  <div>
+    <div class="exp-item">
+      <div class="exp-period" data-de="2022 — Heute" data-jp="2022年 — 現在">2022 — Heute</div>
+      <div>
+        <div class="exp-role" data-de="Junior Systems Engineer" data-jp="ジュニアシステムエンジニア">Junior Systems Engineer</div>
+        <div class="exp-company">SITS Deutschland GmbH · Köln, DE</div>
+        <p class="exp-desc" data-de="Aufbau und Betrieb einer hybriden Cloud-Infrastruktur. Migration auf Kubernetes und Einführung eines GitOps-Workflows mit ArgoCD und Terraform. Deployment-Zeit um 70 % reduziert." data-jp="3,000人以上のユーザー向けにハイブリッドクラウドインフラを構築・運用。KubernetesへのマイグレーションとArgoCD・TerraformによるGitOpsワークフローを導入。デプロイ時間を70%短縮。">Aufbau und Betrieb einer hybriden Cloud-Infrastruktur für 3.000+ Nutzer. Migration auf Kubernetes und Einführung eines GitOps-Workflows mit ArgoCD und Terraform. Deployment-Zeit um 70 % reduziert.</p>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-period" data-de="2018 — 2021" data-jp="2018年 — 2021年">2018 — 2021</div>
+      <div>
+        <div class="exp-role" data-de="IT-Genius" data-jp="システムエンジニア">IT-Genius</div>
+        <div class="exp-company">UNIQLO EUROPE LTD · Köln, DE</div>
+        <p class="exp-desc" data-de="Administration von Linux- und Windows-Servern für Managed-Service-Kunden. Automatisierung mit Ansible und Bash. Aufbau des ersten zentralen Monitoring-Stacks mit Prometheus und Grafana." data-jp="マネージドサービス顧客向けLinux・Windowsサーバーの管理。AnsibleとBashによる自動化。PrometheusとGrafanaを用いた初の集中監視スタックを構築。">Administration von Linux- und Windows-Servern für Managed-Service-Kunden. Automatisierung mit Ansible und Bash. Aufbau des ersten zentralen Monitoring-Stacks mit Prometheus und Grafana.</p>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-period" data-de="2016 — 2018" data-jp="2016年 — 2018年">2016 — 2018</div>
+      <div>
+        <div class="exp-role" data-de="IT-Systemadministrator" data-jp="ITシステム管理者">IT-Systemadministrator</div>
+        <div class="exp-company">TechVentures GmbH · München, DE</div>
+        <p class="exp-desc" data-de="Aufbau der gesamten Netzwerkinfrastruktur von Grund auf. Einführung von Virtualisierung mit VMware und Verwaltung der Active Directory Umgebung." data-jp="ネットワークインフラ全体をゼロから構築。VMwareによる仮想化の導入とActive Directory環境の管理。">Aufbau der gesamten Netzwerkinfrastruktur von Grund auf. Einführung von Virtualisierung mit VMware und Verwaltung der Active Directory Umgebung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- PROJECTS -->
+<section id="projects" class="fade">
+  <p class="eyebrow" data-de="Projekte" data-jp="プロジェクト">Projekte</p>
+  <h2 data-de="Ausgewählte Arbeiten." data-jp="主なプロジェクト。">Ausgewählte Arbeiten.</h2>
+  <div class="grid-2">
+    <div class="cell">
+      <div class="proj-num">01</div>
+      <div class="proj-title" data-de="Kubernetes Platform Migration" data-jp="Kubernetesプラットフォーム移行">Kubernetes Platform Migration</div>
+      <p class="cell-body" data-de="Migration einer monolithischen Applikationslandschaft auf Kubernetes mit Zero-Downtime Deployment und automatisiertem Rollback." data-jp="モノリシックなアプリケーション環境をKubernetesへ移行。ゼロダウンタイムデプロイと自動ロールバックを実現。">Migration einer monolithischen Applikationslandschaft auf Kubernetes mit Zero-Downtime Deployment und automatisiertem Rollback.</p>
+      <div class="tags"><span class="tag">Kubernetes</span><span class="tag">Helm</span><span class="tag">Terraform</span><span class="tag">ArgoCD</span></div>
+    </div>
+    <div class="cell">
+      <div class="proj-num">02</div>
+      <div class="proj-title" data-de="GitOps CI/CD Rollout" data-jp="GitOps CI/CDの展開">GitOps CI/CD Rollout</div>
+      <p class="cell-body" data-de="Unternehmensweites GitOps-Framework — alle Infrastrukturänderungen werden versioniert, reviewed und automatisch deployed." data-jp="全社規模のGitOpsフレームワーク構築。インフラ変更はすべてバージョン管理・レビュー・自動デプロイ。">Unternehmensweites GitOps-Framework — alle Infrastrukturänderungen werden versioniert, reviewed und automatisch deployed.</p>
+      <div class="tags"><span class="tag">GitLab CI</span><span class="tag">Ansible</span><span class="tag">Vault</span></div>
+    </div>
+    <div class="cell">
+      <div class="proj-num">03</div>
+      <div class="proj-title" data-de="Zero Trust Network" data-jp="ゼロトラストネットワーク">Zero Trust Network</div>
+      <p class="cell-body" data-de="Neugestaltung der Netzwerkarchitektur nach Zero-Trust-Prinzipien mit WireGuard-VPN und Identity-Aware Proxy." data-jp="ゼロトラスト原則に基づくネットワーク再設計。WireGuard VPNとIdentity-Aware Proxyを導入。">Neugestaltung der Netzwerkarchitektur nach Zero-Trust-Prinzipien mit WireGuard-VPN und Identity-Aware Proxy.</p>
+      <div class="tags"><span class="tag">WireGuard</span><span class="tag">pfSense</span><span class="tag">Cloudflare ZT</span></div>
+    </div>
+    <div class="cell">
+      <div class="proj-num">04</div>
+      <div class="proj-title" data-de="Zentrales Monitoring" data-jp="集中監視基盤">Zentrales Monitoring</div>
+      <p class="cell-body" data-de="Observability-Lösung für 200+ Server. Mean Time to Detect von 45 Minuten auf unter 3 Minuten reduziert." data-jp="200台以上のサーバー向けObservability基盤。平均検知時間を45分から3分未満に短縮。">Observability-Lösung für 200+ Server. Mean Time to Detect von 45 Minuten auf unter 3 Minuten reduziert.</p>
+      <div class="tags"><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Loki</span></div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- CERTS -->
+<section class="fade">
+  <p class="eyebrow" data-de="Zertifizierungen" data-jp="資格・認定">Zertifizierungen</p>
+  <h2 data-de="Qualifikationen." data-jp="保有資格。">Qualifikationen.</h2>
+  <div class="grid-3">
+    <div class="cell-sm">
+      <div class="cert-issuer">AWS</div>
+      <div class="cert-name" data-de="Solutions Architect – Professional" data-jp="ソリューションアーキテクト – プロフェッショナル">Solutions Architect – Professional</div>
+      <div class="cert-year">2023</div>
+    </div>
+    <div class="cell-sm">
+      <div class="cert-issuer">CNCF</div>
+      <div class="cert-name" data-de="Certified Kubernetes Administrator" data-jp="認定Kubernetes管理者（CKA）">Certified Kubernetes Administrator</div>
+      <div class="cert-year">2022</div>
+    </div>
+    <div class="cell-sm">
+      <div class="cert-issuer">Microsoft</div>
+      <div class="cert-name" data-de="Azure Administrator Associate (AZ-104)" data-jp="Azureアドミニストレーター アソシエイト（AZ-104）">Azure Administrator Associate (AZ-104)</div>
+      <div class="cert-year">2022</div>
+    </div>
+    <div class="cell-sm">
+      <div class="cert-issuer">HashiCorp</div>
+      <div class="cert-name" data-de="Terraform Associate" data-jp="Terraformアソシエイト">Terraform Associate</div>
+      <div class="cert-year">2021</div>
+    </div>
+    <div class="cell-sm">
+      <div class="cert-issuer">CompTIA</div>
+      <div class="cert-name" data-de="Security+ CE" data-jp="Security+ CE">Security+ CE</div>
+      <div class="cert-year">2020</div>
+    </div>
+    <div class="cell-sm">
+      <div class="cert-issuer">Red Hat</div>
+      <div class="cert-name" data-de="RHCSA – Red Hat Certified Sysadmin" data-jp="RHCSA – レッドハット認定システム管理者">RHCSA – Red Hat Certified Sysadmin</div>
+      <div class="cert-year">2019</div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- CONTACT -->
+<div id="contact" class="fade" style="text-align:center;padding:80px 5%;max-width:980px;margin:0 auto;">
+  <p class="eyebrow" data-de="Kontakt" data-jp="連絡先">Kontakt</p>
+  <h2 style="margin-bottom:0.75rem" data-de="Lass uns sprechen." data-jp="お話しましょう。">Lass uns sprechen.</h2>
+  <p class="contact-sub" data-de="Offen für neue Projekte, Freelance-Anfragen oder Vollzeitstellen." data-jp="新しいプロジェクト、フリーランス依頼、またはフルタイムのポジションに対応しています。">Offen für neue Projekte, Freelance-Anfragen oder Vollzeitstellen.</p>
+  <div class="contact-row">
+    <a class="contact-link" href="mailto:alex.mueller@example.com">alex.mueller@example.com</a>
+    <a class="contact-link" href="https://www.linkedin.com/in/kotaro-yamasaki-22941b191/">LinkedIn</a>
+    <a class="contact-link" href="https://github.com/kotaroooooooooo">GitHub</a>
+    <a class="contact-link" href="#" data-de="CV herunterladen" data-jp="履歴書をダウンロード">CV herunterladen</a>
+  </div>
+</div>
+
+<hr>
+
+<footer>
+  <span>© 2026 Alex Müller</span>
+  <span data-de="Erstellt mit Unterstützung von KI (Claude, Anthropic)" data-jp="AI（Claude、Anthropic）の支援を受けて作成">Erstellt mit Unterstützung von KI (Claude, Anthropic)</span>
+</footer>
+
+<script>
+  // ── Scroll fade
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+
+  // ── Language switcher
+  let currentLang = 'de';
+
+  function applyLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang === 'jp' ? 'ja' : 'de';
+
+    document.querySelectorAll('[data-de]').forEach(el => {
+      const text = el.getAttribute('data-' + lang);
+      if (!text) return;
+      if (el.tagName === 'INPUT' || el.tagName === 'BUTTON') {
+        el.value = text;
+      } else {
+        el.innerHTML = text;
+      }
+    });
+
+    document.querySelectorAll('.lang-opt').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+  }
+
+  document.querySelectorAll('.lang-opt').forEach(btn => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+
+  // ── Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+  });
+
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+  }
+
+  // close mobile menu on outside tap
+  document.addEventListener('click', e => {
+    if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) closeMobile();
+  });
+</script>
+</body>
+</html>
