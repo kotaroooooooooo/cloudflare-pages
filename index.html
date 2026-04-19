@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kotaro Yamasaki — Junior Systems Engineer</title>
+<title>Kotaro Yamasaki - Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -74,36 +74,33 @@
   .nav-center a:hover { color: var(--black); }
 
   /* language switcher */
-  .lang-switcher {
+  .lang-toggle {
     display: flex;
     align-items: center;
-    gap: 2px;
+    background: var(--lightest);
+    border-radius: 980px;
+    padding: 3px;
     flex-shrink: 0;
   }
 
-  .lang-btn {
+  .lang-opt {
     font-family: var(--font);
     font-size: 12px;
     font-weight: 500;
-    padding: 4px 10px;
+    padding: 3px 10px;
     border-radius: 980px;
-    border: 1px solid transparent;
+    border: none;
     background: transparent;
     color: var(--mid);
     cursor: pointer;
-    transition: all 0.18s;
-    line-height: 1;
+    transition: background 0.18s, color 0.18s;
+    line-height: 1.4;
   }
 
-  .lang-btn.active {
-    background: var(--black);
-    color: #fff;
-    border-color: var(--black);
-  }
-
-  .lang-btn:not(.active):hover {
-    border-color: var(--light);
+  .lang-opt.active {
+    background: var(--white);
     color: var(--black);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   }
 
   /* hamburger */
@@ -477,9 +474,9 @@
   </ul>
 
   <div style="display:flex;align-items:center;gap:0.75rem;">
-    <div class="lang-switcher">
-      <button class="lang-btn active" data-lang="de">DE</button>
-      <button class="lang-btn" data-lang="jp">JP</button>
+    <div class="lang-toggle">
+      <button class="lang-opt active" data-lang="de">DE</button>
+      <button class="lang-opt" data-lang="jp">JP</button>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
       <span></span><span></span><span></span>
@@ -497,9 +494,9 @@
 
 <!-- HERO -->
 <div id="hero" class="fade">
-  <p class="eyebrow" data-de="Systems Engineer · Berlin, DE" data-jp="システムエンジニア · ケルン、ドイツ">Systems Engineer · Köln, DE</p>
-  <h1><a data-de="Kotaro" data-jp="公開太郎">Kotaro<br>Yamasaki</h1>
-  <p class="hero-sub" data-de="This page is currently on test/development. The content is dummy" data-jp="オンプレミスからクラウドネイティブまで、重要なシステムアーキテクチャを設計・運用しています。信頼性、セキュリティ、自動化を重視しています。">Ich designe und betreibe kritische Systemarchitekturen — von On-Prem bis Cloud-native. Fokus auf Verlässlichkeit, Sicherheit und Automatisierung.</p>
+  <p class="eyebrow" data-de="Systems Engineer · Köln, DE" data-jp="システムエンジニア · ケルン、ドイツ">Systems Engineer · Köln, DE</p>
+  <h1><a data-de="Kotaro " data-jp="山﨑">Kotaro </a><a data-de="Yamasaki" data-jp="航太郎">Yamasaki</a></h1>
+  <p class="hero-sub" data-de="Mal schreibe ich Code, mal spiele ich an Servern rum.Ich bin sozusagen ein Vibe Coder." data-jp="気が向いたらコード書いて、気が向いたらサーバーいじってます。いわゆるVibe Coderです。">Mal schreibe ich Code, mal spiele ich an Servern rum.Ich bin sozusagen ein Vibe Coder.</p>
   <div class="btn-row">
     <a class="btn btn-dark" href="#projects" data-de="Projekte ansehen" data-jp="プロジェクトを見る">Projekte ansehen</a>
     <a class="btn btn-ghost" href="#contact" data-de="Kontakt" data-jp="お問い合わせ">Kontakt</a>
@@ -577,18 +574,18 @@
   <h2 data-de="Werdegang." data-jp="キャリア。">Werdegang.</h2>
   <div>
     <div class="exp-item">
-      <div class="exp-period" data-de="2021 — Heute" data-jp="2021年 — 現在">2021 — Heute</div>
+      <div class="exp-period" data-de="2022 — Heute" data-jp="2022年 — 現在">2022 — Heute</div>
       <div>
-        <div class="exp-role" data-de="Senior Systems Engineer" data-jp="シニアシステムエンジニア">Senior Systems Engineer</div>
-        <div class="exp-company">Infra AG · Berlin, DE</div>
-        <p class="exp-desc" data-de="Aufbau und Betrieb einer hybriden Cloud-Infrastruktur für 3.000+ Nutzer. Migration auf Kubernetes und Einführung eines GitOps-Workflows mit ArgoCD und Terraform. Deployment-Zeit um 70 % reduziert." data-jp="3,000人以上のユーザー向けにハイブリッドクラウドインフラを構築・運用。KubernetesへのマイグレーションとArgoCD・TerraformによるGitOpsワークフローを導入。デプロイ時間を70%短縮。">Aufbau und Betrieb einer hybriden Cloud-Infrastruktur für 3.000+ Nutzer. Migration auf Kubernetes und Einführung eines GitOps-Workflows mit ArgoCD und Terraform. Deployment-Zeit um 70 % reduziert.</p>
+        <div class="exp-role" data-de="Junior Systems Engineer" data-jp="ジュニアシステムエンジニア">Junior Systems Engineer</div>
+        <div class="exp-company">SITS Deutschland GmbH · Köln, DE</div>
+        <p class="exp-desc" data-de="Aufbau und Betrieb einer hybriden Cloud-Infrastruktur. Migration auf Kubernetes und Einführung eines GitOps-Workflows mit ArgoCD und Terraform. Deployment-Zeit um 70 % reduziert." data-jp="3,000人以上のユーザー向けにハイブリッドクラウドインフラを構築・運用。KubernetesへのマイグレーションとArgoCD・TerraformによるGitOpsワークフローを導入。デプロイ時間を70%短縮。">Aufbau und Betrieb einer hybriden Cloud-Infrastruktur für 3.000+ Nutzer. Migration auf Kubernetes und Einführung eines GitOps-Workflows mit ArgoCD und Terraform. Deployment-Zeit um 70 % reduziert.</p>
       </div>
     </div>
     <div class="exp-item">
       <div class="exp-period" data-de="2018 — 2021" data-jp="2018年 — 2021年">2018 — 2021</div>
       <div>
-        <div class="exp-role" data-de="Systems Engineer" data-jp="システムエンジニア">Systems Engineer</div>
-        <div class="exp-company">DataCore GmbH · Hamburg, DE</div>
+        <div class="exp-role" data-de="IT-Genius" data-jp="システムエンジニア">IT-Genius</div>
+        <div class="exp-company">UNIQLO EUROPE LTD · Köln, DE</div>
         <p class="exp-desc" data-de="Administration von Linux- und Windows-Servern für Managed-Service-Kunden. Automatisierung mit Ansible und Bash. Aufbau des ersten zentralen Monitoring-Stacks mit Prometheus und Grafana." data-jp="マネージドサービス顧客向けLinux・Windowsサーバーの管理。AnsibleとBashによる自動化。PrometheusとGrafanaを用いた初の集中監視スタックを構築。">Administration von Linux- und Windows-Servern für Managed-Service-Kunden. Automatisierung mit Ansible und Bash. Aufbau des ersten zentralen Monitoring-Stacks mit Prometheus und Grafana.</p>
       </div>
     </div>
@@ -686,8 +683,8 @@
   <p class="contact-sub" data-de="Offen für neue Projekte, Freelance-Anfragen oder Vollzeitstellen." data-jp="新しいプロジェクト、フリーランス依頼、またはフルタイムのポジションに対応しています。">Offen für neue Projekte, Freelance-Anfragen oder Vollzeitstellen.</p>
   <div class="contact-row">
     <a class="contact-link" href="mailto:alex.mueller@example.com">alex.mueller@example.com</a>
-    <a class="contact-link" href="#">LinkedIn</a>
-    <a class="contact-link" href="#">GitHub</a>
+    <a class="contact-link" href="https://www.linkedin.com/in/kotaro-yamasaki-22941b191/">LinkedIn</a>
+    <a class="contact-link" href="https://github.com/kotaroooooooooo">GitHub</a>
     <a class="contact-link" href="#" data-de="CV herunterladen" data-jp="履歴書をダウンロード">CV herunterladen</a>
   </div>
 </div>
@@ -723,12 +720,12 @@
       }
     });
 
-    document.querySelectorAll('.lang-btn').forEach(btn => {
+    document.querySelectorAll('.lang-opt').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.lang === lang);
     });
   }
 
-  document.querySelectorAll('.lang-btn').forEach(btn => {
+  document.querySelectorAll('.lang-opt').forEach(btn => {
     btn.addEventListener('click', () => applyLang(btn.dataset.lang));
   });
 
