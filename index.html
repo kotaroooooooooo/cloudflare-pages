@@ -73,34 +73,32 @@
 
   .nav-center a:hover { color: var(--black); }
 
-  /* language switcher */
-  .lang-toggle {
-    display: flex;
-    align-items: center;
-    background: var(--lightest);
-    border-radius: 980px;
-    padding: 3px;
-    flex-shrink: 0;
-  }
-
-  .lang-opt {
+  /* language switcher — single toggle button */
+  .lang-toggle-btn {
     font-family: var(--font);
     font-size: 12px;
     font-weight: 500;
-    padding: 3px 10px;
+    padding: 5px 14px;
     border-radius: 980px;
-    border: none;
-    background: transparent;
-    color: var(--mid);
-    cursor: pointer;
-    transition: background 0.18s, color 0.18s;
-    line-height: 1.4;
-  }
-
-  .lang-opt.active {
+    border: 1px solid var(--light);
     background: var(--white);
     color: var(--black);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: background 0.18s, border-color 0.18s;
+    line-height: 1.4;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .lang-toggle-btn:hover { background: var(--bg); border-color: var(--mid); }
+
+  .lang-toggle-btn .lang-flag {
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--mid);
+    letter-spacing: 0.02em;
   }
 
   /* hamburger */
@@ -325,6 +323,19 @@
 
   .exp-period { font-size: 13px; color: var(--mid); padding-top: 2px; line-height: 1.5; }
 
+  .exp-logo {
+    margin-top: 0.75rem;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .exp-logo svg { width: 22px; height: 22px; }
+
   .exp-role {
     font-size: 1rem;
     font-weight: 600;
@@ -403,6 +414,13 @@
     transition: color 0.2s;
   }
 
+  .contact-icon {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin-right: 6px;
+  }
+
   .contact-link:hover { color: var(--black); }
 
   /* ── FOOTER ── */
@@ -474,10 +492,10 @@
   </ul>
 
   <div style="display:flex;align-items:center;gap:0.75rem;">
-    <div class="lang-toggle">
-      <button class="lang-opt active" data-lang="de">DE</button>
-      <button class="lang-opt" data-lang="jp">JP</button>
-    </div>
+    <button class="lang-toggle-btn" id="langToggle" title="Sprache wechseln">
+      <span id="langLabel">DE</span>
+      <span class="lang-flag" id="langSub">→ JP</span>
+    </button>
     <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
       <span></span><span></span><span></span>
     </button>
@@ -494,7 +512,7 @@
 
 <!-- HERO -->
 <div id="hero" class="fade">
-  <p class="eyebrow" data-de="Systems Engineer · Köln, DE" data-jp="システムエンジニア · ケルン、ドイツ">Systems Engineer · Köln, DE</p>
+  <p class="eyebrow" data-de="Junior Systems Engineer · Köln, DE" data-jp="ジュニアシステムエンジニア · ケルン、ドイツ">Junior Systems Engineer · Köln, DE</p>
   <h1><a data-de="Kotaro " data-jp="山﨑">Kotaro </a><a data-de="Yamasaki" data-jp="航太郎">Yamasaki</a></h1>
   <p class="hero-sub" data-de="Mal schreibe ich Code, mal spiele ich an Servern rum.Ich bin sozusagen ein Vibe Coder." data-jp="気が向いたらコード書いて、気が向いたらサーバーいじってます。いわゆるVibe Coderです。">Mal schreibe ich Code, mal spiele ich an Servern rum.Ich bin sozusagen ein Vibe Coder.</p>
   <div class="btn-row">
@@ -574,29 +592,60 @@
   <h2 data-de="Werdegang." data-jp="キャリア。">Werdegang.</h2>
   <div>
     <div class="exp-item">
-      <div class="exp-period" data-de="2022 — Heute" data-jp="2022年 — 現在">2022 — Heute</div>
+      <div>
+        <div class="exp-period" data-de="2022 — Heute" data-jp="2022年 — 現在">2022 — Heute</div>
+        <div class="exp-logo">
+          <img src="logo/sits.png" alt="SITS Deutschland GmbH" style="width: 36px; height: 36px; object-fit:contain;">
+            <rect x="3" y="4" width="16" height="5" rx="1.5" stroke="#6e6e73" stroke-width="1.3"/>
+            <rect x="3" y="12" width="16" height="5" rx="1.5" stroke="#6e6e73" stroke-width="1.3"/>
+            <circle cx="16.5" cy="6.5" r="1" fill="#6e6e73"/>
+            <circle cx="16.5" cy="14.5" r="1" fill="#6e6e73"/>
+          </svg>
+        </div>
+      </div>
       <div>
         <div class="exp-role" data-de="Junior Systems Engineer" data-jp="ジュニアシステムエンジニア">Junior Systems Engineer</div>
         <div class="exp-company">SITS Deutschland GmbH · Köln, DE</div>
-        <p class="exp-desc" data-de="Aufbau und Betrieb einer hybriden Cloud-Infrastruktur. Migration auf Kubernetes und Einführung eines GitOps-Workflows mit ArgoCD und Terraform. Deployment-Zeit um 70 % reduziert." data-jp="3,000人以上のユーザー向けにハイブリッドクラウドインフラを構築・運用。KubernetesへのマイグレーションとArgoCD・TerraformによるGitOpsワークフローを導入。デプロイ時間を70%短縮。">Aufbau und Betrieb einer hybriden Cloud-Infrastruktur für 3.000+ Nutzer. Migration auf Kubernetes und Einführung eines GitOps-Workflows mit ArgoCD und Terraform. Deployment-Zeit um 70 % reduziert.</p>
+        <p class="exp-desc" data-de="Aufbau und Betrieb einer hybriden Cloud-Infrastruktur für 3.000+ Nutzer. Migration auf Kubernetes und Einführung eines GitOps-Workflows mit ArgoCD und Terraform. Deployment-Zeit um 70 % reduziert." data-jp="3,000人以上のユーザー向けにハイブリッドクラウドインフラを構築・運用。KubernetesへのマイグレーションとArgoCD・TerraformによるGitOpsワークフローを導入。デプロイ時間を70%短縮。">Aufbau und Betrieb einer hybriden Cloud-Infrastruktur für 3.000+ Nutzer. Migration auf Kubernetes und Einführung eines GitOps-Workflows mit ArgoCD und Terraform. Deployment-Zeit um 70 % reduziert.</p>
       </div>
     </div>
     <div class="exp-item">
-      <div class="exp-period" data-de="2018 — 2021" data-jp="2018年 — 2021年">2018 — 2021</div>
       <div>
-        <div class="exp-role" data-de="IT-Genius" data-jp="システムエンジニア">IT-Genius</div>
+        <div class="exp-period" data-de="2018 — 2021" data-jp="2018年 — 2021年">2018 — 2021</div>
+        <div class="exp-logo">
+          <img src="logo/uniqlo.jpeg" alt="UNIQLO EUROPE LTD" style="width: 36px; height: 36px; object-fit:contain;">
+            <ellipse cx="11" cy="6" rx="6" ry="2.2" stroke="#6e6e73" stroke-width="1.3"/>
+            <path d="M5 6v4c0 1.2 2.7 2.2 6 2.2s6-1 6-2.2V6" stroke="#6e6e73" stroke-width="1.3"/>
+            <path d="M5 10v4c0 1.2 2.7 2.2 6 2.2s6-1 6-2.2v-4" stroke="#6e6e73" stroke-width="1.3"/>
+          </svg>
+        </div>
+      </div>
+      <div>
+        <div class="exp-role" data-de="Digital-Genius" data-jp="デジタル時に明日">Digital-Genius</div>
         <div class="exp-company">UNIQLO EUROPE LTD · Köln, DE</div>
         <p class="exp-desc" data-de="Administration von Linux- und Windows-Servern für Managed-Service-Kunden. Automatisierung mit Ansible und Bash. Aufbau des ersten zentralen Monitoring-Stacks mit Prometheus und Grafana." data-jp="マネージドサービス顧客向けLinux・Windowsサーバーの管理。AnsibleとBashによる自動化。PrometheusとGrafanaを用いた初の集中監視スタックを構築。">Administration von Linux- und Windows-Servern für Managed-Service-Kunden. Automatisierung mit Ansible und Bash. Aufbau des ersten zentralen Monitoring-Stacks mit Prometheus und Grafana.</p>
       </div>
     </div>
-    <div class="exp-item">
-      <div class="exp-period" data-de="2016 — 2018" data-jp="2016年 — 2018年">2016 — 2018</div>
+    <!--      <div class="exp-item">
       <div>
-        <div class="exp-role" data-de="IT-Systemadministrator" data-jp="ITシステム管理者">IT-Systemadministrator</div>
-        <div class="exp-company">TechVentures GmbH · München, DE</div>
-        <p class="exp-desc" data-de="Aufbau der gesamten Netzwerkinfrastruktur von Grund auf. Einführung von Virtualisierung mit VMware und Verwaltung der Active Directory Umgebung." data-jp="ネットワークインフラ全体をゼロから構築。VMwareによる仮想化の導入とActive Directory環境の管理。">Aufbau der gesamten Netzwerkinfrastruktur von Grund auf. Einführung von Virtualisierung mit VMware und Verwaltung der Active Directory Umgebung.</p>
+        <div class="exp-period" data-de="2016 — 2018" data-jp="2016年 — 2018年">2016 — 2018</div>
+        <div class="exp-logo">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11" cy="5" r="2" stroke="#6e6e73" stroke-width="1.3"/>
+            <circle cx="4.5" cy="16" r="2" stroke="#6e6e73" stroke-width="1.3"/>
+            <circle cx="17.5" cy="16" r="2" stroke="#6e6e73" stroke-width="1.3"/>
+            <line x1="11" y1="7" x2="4.5" y2="14" stroke="#6e6e73" stroke-width="1.2"/>
+            <line x1="11" y1="7" x2="17.5" y2="14" stroke="#6e6e73" stroke-width="1.2"/>
+            <line x1="6.5" y1="16" x2="15.5" y2="16" stroke="#6e6e73" stroke-width="1.2"/>
+          </svg>
+        </div>
       </div>
-    </div>
+      <div>
+        <div class="exp-role" data-de="Jobtitel auf DE" data-jp="Jobtitel auf JP">Jobtitel auf DE</div>
+        <div class="exp-company">Unternehmen · Köln, DE</div>
+        <p class="exp-desc" data-de="Text auf DE" data-jp="Text auf JP">Text auf DE</p>
+      </div>
+    </div>     -->
   </div>
 </section>
 
@@ -682,18 +731,17 @@
   <h2 style="margin-bottom:0.75rem" data-de="Lass uns sprechen." data-jp="お話しましょう。">Lass uns sprechen.</h2>
   <p class="contact-sub" data-de="Offen für neue Projekte, Freelance-Anfragen oder Vollzeitstellen." data-jp="新しいプロジェクト、フリーランス依頼、またはフルタイムのポジションに対応しています。">Offen für neue Projekte, Freelance-Anfragen oder Vollzeitstellen.</p>
   <div class="contact-row">
-    <a class="contact-link" href="mailto:alex.mueller@example.com">alex.mueller@example.com</a>
     <a class="contact-link" href="https://www.linkedin.com/in/kotaro-yamasaki-22941b191/">LinkedIn</a>
-    <a class="contact-link" href="https://github.com/kotaroooooooooo">GitHub</a>
-    <a class="contact-link" href="#" data-de="CV herunterladen" data-jp="履歴書をダウンロード">CV herunterladen</a>
+    <a class="contact-link" href="https://github.com/kotaroooooooooo"><img src="logo/contact/github-svgrepo-com.svg" alt="GitHub" class="contact-icon">GitHub</a>
+    <!-- <a class="contact-link" href="mailto:">Mail</a> -->
   </div>
 </div>
 
 <hr>
 
 <footer>
-  <span>© 2026 Alex Müller</span>
-  <span data-de="Erstellt mit Unterstützung von KI (Claude, Anthropic)" data-jp="AI（Claude、Anthropic）の支援を受けて作成">Erstellt mit Unterstützung von KI (Claude, Anthropic)</span>
+  <span>© 2026 Kotaro Yamasaki</span>
+  <span data-de="Erstellt mit Unterstützung von KI" data-jp="AIの支援を受けて作成">Erstellt mit Unterstützung von KI</span>
 </footer>
 
 <script>
@@ -720,13 +768,19 @@
       }
     });
 
-    document.querySelectorAll('.lang-opt').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.lang === lang);
-    });
+    if (langLabel) {
+      langLabel.textContent = lang === 'de' ? 'DE' : 'JP';
+      langSub.textContent   = lang === 'de' ? '→ JP' : '→ DE';
+    }
   }
 
-  document.querySelectorAll('.lang-opt').forEach(btn => {
-    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  const langToggle = document.getElementById('langToggle');
+  const langLabel  = document.getElementById('langLabel');
+  const langSub    = document.getElementById('langSub');
+
+  langToggle.addEventListener('click', () => {
+    const next = currentLang === 'de' ? 'jp' : 'de';
+    applyLang(next);
   });
 
   // ── Hamburger
