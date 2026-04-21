@@ -9,7 +9,7 @@ Built with plain HTML, CSS, and vanilla JavaScript. No frameworks, no dependenci
 ## Preview
 
 ```
-nav: Alex Müller · Skills · Erfahrung · Projekte · Kontakt · [DE → JP]
+nav: Kotaro Yamasaki · Skills · Erfahrung · Projekte · Kontakt · [DE → JP]
 ```
 
 Sections: Hero → About → Skills → Experience → Projects → Certifications → Contact
@@ -20,8 +20,6 @@ Sections: Hero → About → Skills → Experience → Projects → Certificatio
 
 - **Bilingual (DE / JP)** — single toggle button switches all page text between German and Japanese; Japanese rendered with Noto Sans JP
 - **Mobile responsive** — hamburger menu on small screens, grids reflow to single column below 768px / 480px
-- **Apple-style aesthetic** — frosted glass nav, pill buttons, hairline borders, generous whitespace
-- **Japanese accents** — thin red torii-red hairline before each section eyebrow
 - **Company logos** — subtle SVG icons next to each experience entry
 - **Smooth scroll + fade-in** — sections animate in on scroll via IntersectionObserver
 - **Zero dependencies** — no npm, no bundler, no framework
@@ -31,11 +29,11 @@ Sections: Hero → About → Skills → Experience → Projects → Certificatio
 ## Structure
 
 ```
-portfolio.html      # entire site — one self-contained file
+index.html          # entire site — one self-contained file
 README.md           # this file
 ```
 
-All CSS and JavaScript are inlined inside `portfolio.html`. No external assets except Google Fonts (loaded via CDN).
+All CSS and JavaScript are inlined inside `index.html`. No external assets except Google Fonts (loaded via CDN).
 
 ---
 
@@ -43,13 +41,12 @@ All CSS and JavaScript are inlined inside `portfolio.html`. No external assets e
 
 ### Personal info
 
-Open `portfolio.html` in any text editor and search for the placeholder values:
+Open `index.html` in any text editor and search for the placeholder values:
 
 | Placeholder | Where |
 |---|---|
-| `Alex Müller` | `<title>`, nav, hero, footer |
+| `Kotaro Yamasaki` | `<title>`, nav, hero, footer |
 | `Systems Engineer · Berlin, DE` | hero eyebrow |
-| `alex.mueller@example.com` | contact section |
 | `Infra AG`, `DataCore GmbH`, `TechVentures GmbH` | experience entries |
 
 ### Adding a real profile photo or company logo
@@ -117,12 +114,8 @@ Both are loaded from Google Fonts CDN. For offline use, download and self-host v
 Since this is a single HTML file, deployment is straightforward:
 
 **GitHub Pages**
-1. Push `portfolio.html` and `README.md` to a repository
+1. Push `index.html` and `README.md` to a repository
 2. Go to Settings → Pages → Source: `main` branch, `/ (root)`
-3. Rename `portfolio.html` to `index.html` for the root URL to work
-
-**Netlify / Vercel drop**
-Drag and drop `portfolio.html` (renamed to `index.html`) into the deploy area.
 
 **Custom domain**
 Add a `CNAME` file with your domain name next to `index.html` for GitHub Pages, or configure the custom domain in your hosting provider's dashboard.
@@ -131,7 +124,7 @@ Add a `CNAME` file with your domain name next to `index.html` for GitHub Pages, 
 
 ## Browser support
 
-Works in all modern browsers (Chrome, Firefox, Safari, Edge). The frosted glass nav uses `backdrop-filter` which degrades gracefully in older environments — the nav remains fully readable with its solid fallback background.
+Works in all modern browsers (Chrome, Firefox, Safari, Edge).
 
 ---
 
