@@ -41,13 +41,23 @@ Open `index.html` in any text editor and search for the placeholder values:
 | `Systems Engineer · Berlin, DE` | hero eyebrow |
 | `Infra AG`, `DataCore GmbH`, `TechVentures GmbH` | experience entries |
 
-### Adding a real profile photo or company logo
+### Adding a company logo
 
 Each experience entry has an `.exp-logo` container with an inline SVG icon. Replace the `<svg>` with an `<img>` tag pointing to your logo file:
 
 ```html
 <div class="exp-logo">
   <img src="logo-company.png" alt="Company Name" style="width:24px;height:24px;object-fit:contain;">
+</div>
+```
+
+### Adding a Certificate
+
+```html
+<div class="cell-sm">
+  <div class="cert-issuer">CERT-ISSUER</div>
+  <div class="cert-name" data-de="Certified Kubernetes Administrator" data-jp="認定Kubernetes管理者（CKA）">Certified Kubernetes Administrator</div>
+  <div class="cert-year">2022</div>
 </div>
 ```
 
