@@ -1,8 +1,8 @@
-# Alex Müller — Systems Engineer Portfolio
+# Kotaro Yamasaki — Systems Engineer Portfolio
 
-A clean, minimal personal portfolio website for a Systems Engineer — inspired by Apple's design language with subtle Japanese aesthetic touches.
+A clean, minimal personal portfolio website for a Systems Engineer.
 
-Built with plain HTML, CSS, and vanilla JavaScript. No frameworks, no dependencies, no build step — just open `portfolio.html` in a browser.
+Built with plain HTML, CSS, and vanilla JavaScript. No frameworks, no dependencies, no build step — just open `yamasaki.app` in a browser.
 
 ---
 
