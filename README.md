@@ -6,16 +6,6 @@ Built with plain HTML, CSS, and vanilla JavaScript. No frameworks, no dependenci
 
 ---
 
-## Preview
-
-```
-nav: Kotaro Yamasaki · Skills · Erfahrung · Projekte · Kontakt · [DE → JP]
-```
-
-Sections: Hero → About → Skills → Experience → Projects → Certifications → Contact
-
----
-
 ## Features
 
 - **Bilingual (DE / JP)** — single toggle button switches all page text between German and Japanese; Japanese rendered with Noto Sans JP
@@ -29,6 +19,8 @@ Sections: Hero → About → Skills → Experience → Projects → Certificatio
 ## Structure
 
 ```
+logo                # svg and img for the site
+.gitignore          # just a gitignore for mac
 index.html          # entire site — one self-contained file
 README.md           # this file
 ```
