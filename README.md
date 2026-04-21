@@ -2,7 +2,7 @@
 
 A clean, minimal personal portfolio website for a Systems Engineer.
 
-Built with plain HTML, CSS, and vanilla JavaScript. No frameworks, no dependencies, no build step — just open `yamasaki.app` in a browser.
+Built with plain HTML, CSS, and vanilla JavaScript. No frameworks, no dependencies, no build step — just open `index.html` in a browser.
 
 ---
 
