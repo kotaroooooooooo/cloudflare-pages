@@ -10,7 +10,11 @@
   --font: 'DM Sans', 'Noto Sans JP', sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html { 
+  scroll-behavior: smooth; 
+  margin: 0;
+  padding: 0;
+}
 
 body {
   background: var(--bg);
@@ -19,6 +23,8 @@ body {
   font-size: 17px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
 }
 
 /* ── NAV ── */
@@ -212,7 +218,15 @@ nav {
   /* ── COMMON ── */
   hr { border: none; border-top: 1px solid var(--lightest); }
 
+/* --─ SECTIONS ── */
+
+section {
+  height: 100vh;   /* full viewport height */
+  width: 100%;
+}
+
   /* ── HERO ── */
+
   #hero {
     padding: 140px 5% 80px;
     max-width: 980px;
