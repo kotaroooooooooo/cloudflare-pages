@@ -4,12 +4,6 @@ const obs = new IntersectionObserver(entries => {
   }, { threshold: 0.07 });
   document.querySelectorAll('.fade').forEach(el => obs.observe(el));
 
-// ── Language switcher
-
-
-
-
-
   // ── Hamburger
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -69,77 +63,4 @@ const mobileLangMenu = document.getElementById('mobileLangMenu');
 mobileLangBtn.addEventListener('click', (e) => {
   e.stopPropagation();
   mobileLangMenu.classList.toggle('show');
-});
-
-
-
-
-const translations = {
-  de: {
-    about: "Über mich",
-    skills: "Fähigkeiten",
-    experience: "Erfahrung",
-    projects: "Projekte",
-    contact: "Kontakt"
-  },
-
-    en: {
-        about: "About",
-        skills: "Skills",
-        experience: "Experience",
-        projects: "Projects",
-        contact: "Contact"
-    },
-
-    jp: {
-        about: "私について",
-        skills: "スキル",
-        experience: "経歴",
-        projects: "プロジェクト",
-        contact: "連絡先"
-    }
-};
-
-
-// Sprache wechseln
-function setLanguage(lang) {
-
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-
-        const key = element.dataset.i18n;
-
-        if (translations[lang][key]) {
-            element.textContent = translations[lang][key];
-        }
-    });
-
-    localStorage.setItem('language', lang);
-
-    document.getElementById('langBtn').textContent = labels[lang];
-}
-
-
-// Sprache aus localStorage laden
-document.addEventListener('DOMContentLoaded', () => {
-
-    const savedLanguage =
-        localStorage.getItem('language') || 'de';
-
-    setLanguage(savedLanguage);
-});
-
-
-// Dropdown-Klicks
-document.querySelectorAll('[data-lang]').forEach(item => {
-
-    item.addEventListener('click', () => {
-
-        const lang = item.dataset.lang;
-        setLanguage(lang);
-
-        document
-            .getElementById('langMenu')
-            .classList.remove('show');
-    });
-
 });

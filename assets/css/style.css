@@ -8,6 +8,7 @@
   --light: #d2d2d7;
   --lightest: #e8e8ed;
   --font: 'DM Sans', 'Noto Sans JP', sans-serif;
+  --testred: #ff375f;
 }
 
 html { 
@@ -68,39 +69,37 @@ nav {
   white-space: nowrap;
 }
 
-.nav-center a:hover { color: var(--black); }
+.nav-center a:hover {
+  color: var(--black);
+}
 
-
-/* -- test language -- */
-
-
+/* ── LANGUAGE ── */
 .language-switcher {
     position: relative;
     display: inline-block;
 }
 
-.lang-btn {
-    background: none;
-    border: 1px solid transparent;
-    padding: 8px 14px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 14px;
-    color: var(--mid);
+.language-switcher img {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 5px;
 }
 
 .lang-item {
-    color: var(--mid);
+    color: var(--black);
     text-decoration: none;
+    font-size: 13px;
 }
 
 .lang-menu {
     position: absolute;
-    top: 100%;
-    right: 0;
-    width: 180px;
-    background: none;
-    border: 1px solid none;
+    top: 96%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    background: var(--white);
+    border: 1px solid var(--lightest);
     border-radius: 4px;
     margin-top: 5px;
     padding: 0;
@@ -127,11 +126,20 @@ nav {
     display: block;
 }
 
-/* LANGUAGE TOGGLE BUTTON */
+.lang-btn {
+    font-size: 13px;
+    padding: 0.5rem 1.1rem;
+    border-radius: 200px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    display: inline-block;
+    white-space: nowrap;
+    background: var(--black);
+    color: var(--white);
+    border: none;
+  }
 
-
-
-
+.lang-btn:hover { opacity: 0.76; }
 
   /* hamburger */
   .hamburger {
@@ -200,6 +208,16 @@ nav {
   }
 
   .mobile-menu a:last-child { border-bottom: none; }
+
+  .mobile-lang-btn {
+    background: none;
+    border: 1px solid transparent;
+    padding: 8px 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--mid);
+  }
 
   /* ── COMMON ── */
   hr { border: none; border-top: 1px solid var(--lightest); }
@@ -534,4 +552,12 @@ section {
     h1 { font-size: clamp(2.2rem, 11vw, 3rem); }
     h2 { font-size: clamp(1.5rem, 7vw, 2rem); }
     .stat-num { font-size: 1.8rem; }
+  }
+
+/* ── FONTS ── */
+  @font-face {
+    font-family: 'BitcountSingle';
+    src: url('../fonts/BitcountSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
   }
