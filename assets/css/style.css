@@ -38,6 +38,32 @@ nav {
   gap: 1rem;
 }
 
+.nav-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--black);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  flex-shrink: 0;
+}
+
+.nav-center {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-center a {
+  font-size: 13px;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.nav-center a:hover { color: var(--black); }
+
+
 /* -- test language -- */
 
 
@@ -93,35 +119,6 @@ nav {
 .lang-menu.show {
     display: block;
 }
-
-
-
-
-  .nav-name {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--black);
-    text-decoration: none;
-    letter-spacing: -0.01em;
-    flex-shrink: 0;
-  }
-
-  /* desktop nav links */
-  .nav-center {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .nav-center a {
-    font-size: 13px;
-    color: var(--mid);
-    text-decoration: none;
-    transition: color 0.2s;
-    white-space: nowrap;
-  }
-
-  .nav-center a:hover { color: var(--black); }
 
 /* test cursor spotlight*/
 .spotlight {

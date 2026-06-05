@@ -1,3 +1,19 @@
+
+/
+├── index.html          # Optional: redirect or language selector
+├── de/
+│   ├── index.html
+├── en/
+│   ├── index.html
+└── assets/
+    ├── css/
+    │   └── main.css
+    └── js/
+        └── main.js
+
+
+_________________
+
 # Kotaro Yamasaki — Systems Engineer Portfolio
 
 A clean, minimal personal portfolio website for a Systems Engineer.
@@ -133,7 +149,3 @@ Works in all modern browsers (Chrome, Firefox, Safari, Edge).
 ## License
 
 Feel free to use, modify, and adapt this for your own portfolio. Attribution appreciated but not required.
-
----
-
-*Erstellt mit Unterstützung von KI (Claude, Anthropic)*
