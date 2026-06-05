@@ -63,6 +63,14 @@ document.addEventListener('click', (e) => {
     }
 });
 
+const mobileLangBtn = document.getElementById('mobileLangBtn');
+const mobileLangMenu = document.getElementById('mobileLangMenu');
+
+mobileLangBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  mobileLangMenu.classList.toggle('show');
+});
+
 
 
 

@@ -56,6 +56,11 @@ nav {
     color: var(--mid);
 }
 
+.lang-item {
+    color: var(--mid);
+    text-decoration: none;
+}
+
 .lang-menu {
     position: absolute;
     top: 100%;
@@ -70,12 +75,15 @@ nav {
     display: none;
     box-shadow: 0 4px 10px rgba(0,0,0,.1);
     z-index: 1000;
+    color: var(--mid);
 }
 
 .lang-menu li {
     padding: 10px 15px;
     cursor: pointer;
     transition: background .2s;
+    color: var(--mid);
+    text-decoration: none;
 }
 
 .lang-menu li:hover {
@@ -183,6 +191,16 @@ nav {
   .mobile-menu.open { display: flex; }
 
   .mobile-menu a {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--black);
+    text-decoration: none;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--lightest);
+    display: block;
+  }
+
+    .mobile-menu button {
     font-size: 17px;
     font-weight: 500;
     color: var(--black);
@@ -480,6 +498,7 @@ nav {
     /* show hamburger, hide desktop links */
     .hamburger { display: flex; }
     .nav-center { display: none; }
+    .language-switcher { display: none; }
 
     #hero { padding: 110px 5% 60px; }
 
