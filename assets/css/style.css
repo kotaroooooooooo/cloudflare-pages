@@ -212,6 +212,13 @@ section {
   scroll-snap-stop: always;
 }
 
+.section-contact {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
   /* ── HERO ── */
 
   #hero {
@@ -260,13 +267,6 @@ section {
   .btn:hover { opacity: 0.76; }
   .btn-dark { background: var(--black); color: #fff; border: none; }
   .btn-ghost { background: transparent; color: var(--black); border: 1px solid var(--light); }
-
-  /* ── SECTIONS ── */
-  section {
-    padding: 72px 5%;
-    max-width: 980px;
-    margin: 0 auto;
-  }
 
   h2 {
     font-size: clamp(1.7rem, 4vw, 2.8rem);
