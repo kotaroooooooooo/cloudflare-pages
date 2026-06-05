@@ -212,6 +212,13 @@ section {
   scroll-snap-stop: always;
 }
 
+.section-hero {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .section-contact {
   min-height: 100vh;
   display: flex;
@@ -279,7 +286,7 @@ section {
   /* ── STATS ── */
   .stats-row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     background: var(--lightest);
     border: 1px solid var(--lightest);
