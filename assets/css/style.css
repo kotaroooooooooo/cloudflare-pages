@@ -561,3 +561,18 @@ section {
     font-weight: normal;
     font-style: normal;
   }
+
+
+
+  .modellviewer {
+  position: sticky;
+  margin-top: 112px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.modellviewer model-viewer {
+  width: 800px;
+  height: 800px;
+}
